@@ -33,7 +33,7 @@
             if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
             if (!bot.commands.executable(this.rank, chat)) return void (0);
             else {
-              API.sendChat("/me @" + user + " Majkův fanoušek šel AFK!!!");
+              API.sendChat("/me @" + user + "šel AFK!!!");
             }
           }
         };
@@ -45,7 +45,7 @@
             if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
             if (!bot.commands.executable(this.rank, chat)) return void (0);
             else {
-              API.sendChat("/me @" + user + " Majkův fanoušek se vrátil!!!");
+              API.sendChat("/me @" + user + "Se vrátil!!!");
             }
           }
         };
