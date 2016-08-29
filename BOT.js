@@ -22,33 +22,37 @@
         var spamWords = ['spam1', 'spam2', 'spam3', 'spam4'];
         for (var i = 0; i < spamWords.length; i++) {
           window.bot.chatUtilities.spam.push(spamWords[i]);
-        }
-
-        // Example code for a bot command:
-        bot.commands.afkCommand = {
-          command: 'afk',  // The command to be called. With the standard command literal this would be: !bacon
-          rank: 'user', // Minimum user permission to use the command
-          type: 'exact', // Specify if it can accept variables or not (if so, these have to be handled yourself through the chat.message
-          functionality: function (chat, cmd) {
-            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-            if (!bot.commands.executable(this.rank, chat)) return void (0);
-            else {
-              API.sendChat("/me @" + user + "šel AFK!!!");
-            }
-          }
-        };
-        bot.commands.backCommand = {
-          command: 'back',  // The command to be called. With the standard command literal this would be: !bacon
-          rank: 'user', // Minimum user permission to use the command
-          type: 'exact', // Specify if it can accept variables or not (if so, these have to be handled yourself through the chat.message
-          functionality: function (chat, cmd) {
-            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-            if (!bot.commands.executable(this.rank, chat)) return void (0);
-            else {
-              API.sendChat("/me @" + user + "Se vrátil!!!");
-            }
-          }
-        };
+                }
+              }
+            };
+            bot.commands.afkCommand = {
+            command: 'afk',  // The command to be called. With the standard command literal this would be: !bacon
+            rank: 'user', // Minimum user permission to use the command
+            type: 'exact', // Specify if it can accept variables or not (if so, these have to be handled yourself through the chat.message
+              functionality: function (chat, cmd) {
+                if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                if (!bot.commands.executable(this.rank, chat)) return void (0);
+                else {
+                var currentDJ = API.getDJ().username;
+                var user = chat.un; 
+                  API.sendChat("/em @" + user + " Majkův fanoušek šel AFK");
+                }
+              }
+            };
+            bot.commands.backCommand = {
+            command: 'back',  // The command to be called. With the standard command literal this would be: !bacon
+            rank: 'user', // Minimum user permission to use the command
+            type: 'exact', // Specify if it can accept variables or not (if so, these have to be handled yourself through the chat.message
+              functionality: function (chat, cmd) {
+                if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                if (!bot.commands.executable(this.rank, chat)) return void (0);
+                else {
+                var currentDJ = API.getDJ().username;
+                var user = chat.un; 
+                  API.sendChat("/em @" + user + " Majkův fanoušek se vrátil zpátky");
+                }
+              }
+            };
         // Load the chat package again to account for any changes
         bot.loadChat();
 
